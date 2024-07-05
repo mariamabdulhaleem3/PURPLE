@@ -1,0 +1,59 @@
+"start symbol" = <Purple>
+               
+!################ TERMINALS ##################
+
+Id = {letter}
+Digit = {digit}   
+
+!################ RULES #################     
+
+<Purple> ::= Hi Purple '{' <Statements> '}'Bye  Purple
+          
+<Statements> ::= <Block> | <Block><Statements>
+              
+<Block> ::= <Assign> | <If> | <As long as> |  <calling> | <dec-func> | <declr>
+         
+<dec-func> ::= <Function> | <Function> <dec-func>
+            
+!############ declration ###############
+
+<declr> ::= int <Id> | string <Id>
+         
+!############# ASSIGNMENT STATEMENT ###############       
+
+<Assign> ::= Store <Expr> in <Id>    
+          
+<Id> ::= Id
+      
+<Expr> ::= <Expr> '+' <Term> | <Expr> '-' <Term> | <Term>
+        
+<Term> ::= <Term> '*' <Factor> | <Term> '/' <Factor> | <Term> '%' <Factor> | <Factor>
+        
+<Factor> ::= Digit
+          
+!########### IF STATEMENT ##############        
+
+<If> ::= If '('<Id> <Op> <Expr>')' happened',' Do'{'<Statements>'} 'Otherwise '{'<Statements>'}'
+
+<Op> ::= '<' | '<=' | '>' | '>=' | '==' | '!='
+      
+!############ FOR LOOP STATEMENTS #################
+
+<As long as> ::=  <Id>'=' Digit   As long as '(' <Id> <Op> <Expr>')' Do '{'<Statements>  <Id>'++''}' 
+             
+                
+                 
+!############## DECLARATION FUNCTION ################
+<Function> ::= function <funcName> '(' <declr> ')' '{' <Statements> '}'
+            
+<funcName> ::= Id 
+            
+!############## CALLING FUNCTION #################
+<calling> ::= <funcName> '(' <parameter> ')'
+           
+<parameter> ::= Id | Digit
+                       
+                       
+                         
+
+
